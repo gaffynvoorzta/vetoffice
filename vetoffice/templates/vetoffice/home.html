@@ -1,0 +1,29 @@
+{% extends './base.html' %}
+
+{% block content %}
+<h3>Welcome to Vet Office Simulation {{ name }}!<br>(A hyper realistic simulation)</h3>
+<h5>Where imaginary pets belonging to imaginary people<br>come in to have their imaginary problems fixed.</h5>
+
+{% if not request.user.is_authenticated %}
+<a href="{% url 'signup' %}"><button class="btn">Sign Up</button></a>
+<a href="{% url 'login' %}"><button class="btn">Login</button></a>
+{% else %}
+<a href="{% url 'logout' %}"><button class="btn">Logout</button></a>    
+{% endif %}
+
+<p>The best pet is currently:</p>
+{% if pet.animal_type|lower == 'do' %}
+<p>{{ pet.pet_name }}, a {{ pet.breed }} Dog!</p>
+{% elif pet.animal_type|lower == 'ca' %}
+<p>{{ pet.pet_name }}, a {{ pet.breed }} Cat!</p>
+{% elif pet.animal_type|lower == 'bi' %}
+<p>{{ pet.pet_name }}, a {{ pet.breed }} Bird!</p>
+{% elif pet.animal_type|lower == 're' %}
+<p>{{ pet.pet_name }}, a {{ pet.breed }} Reptile!</p>
+{% elif pet.animal_type|lower == 'ot' %}
+<p>{{ pet.pet_name }}, an {{ pet.breed }} Other!</p>
+{% endif %}
+<br>
+<a href="{% url 'office' %}"><button class="btn">Office</button></a>
+
+{% endblock %}

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<head>
+{% load static %}
+{% block head %}
+<link rel="stylesheet" type="text/css" href="{% static 'vetoffice/style.css' %}">
+{% endblock %}
+
+    
+</head>
+<body>
+<a href="{% url 'home' %}"><h1>Vet Office Simulation</h1></a>
+
+{% block content %}
+    {% endblock %}
+</body>
